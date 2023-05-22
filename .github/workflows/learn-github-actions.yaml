@@ -1,0 +1,17 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  check-dotnet-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.100'
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --ucr --configuration Release --no-restore ../..
+      - name: Test with the dotnet CLI
+        run: dotnet test
