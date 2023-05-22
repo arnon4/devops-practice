@@ -12,6 +12,6 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --ucr --configuration Release --no-restore .
+        run: dotnet build --ucr --configuration Release --no-restore
       - name: Test with the dotnet CLI
         run: dotnet test
